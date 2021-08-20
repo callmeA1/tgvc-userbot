@@ -491,21 +491,6 @@ async def unmute(_, m: Message):
     reply = await m.reply_text(f"{emoji.SPEAKER_MEDIUM_VOLUME} unmuted")
     await _delay_delete_messages((reply, m), DELETE_DELAY)
 
-
-@Client.on_message(main_filter
-                   & current_vc
-                   & filters.regex("^(\\/|!)repo$"))
-async def show_repository(_, m: Message):
-    if mp.msg.get('repo') is not None:
-        await mp.msg['repo'].delete()
-    mp.msg['repo'] = await m.reply_text(
-        USERBOT_REPO,
-        disable_web_page_preview=True,
-        quote=False
-    )
-    await m.delete()
-
-
 # - Other functions
 
 
